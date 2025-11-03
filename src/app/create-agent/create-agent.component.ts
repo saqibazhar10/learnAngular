@@ -31,7 +31,7 @@ export class CreateAgentComponent {
 
    createAgent() {
     console.log('Creating agent with data:', this.agent);
-    let endpoint = "https://colorational-emelia-interlaboratory.ngrok-free.dev//create_agent"
+    let endpoint = "https://colorational-emelia-interlaboratory.ngrok-free.dev/create_agent"
     this.http.post<any>(endpoint, this.agent).subscribe({
       next: (res) => {
         console.log(res.result)
