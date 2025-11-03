@@ -39,7 +39,7 @@ export class NavbarComponent {
   ) { }
 
   fetchData(): void {
-    this.http.get<any>('http://localhost:8000/all_conversations').subscribe(
+    this.http.get<any>('https://colorational-emelia-interlaboratory.ngrok-free.dev//all_conversations').subscribe(
       (response) => {
         console.log('API response:', response);
         this.conversations = response
@@ -54,7 +54,7 @@ export class NavbarComponent {
     );
   }
     fetchAgents(): void {
-    this.http.get<any>('http://localhost:8000/all_agents').subscribe(
+    this.http.get<any>('https://colorational-emelia-interlaboratory.ngrok-free.dev//all_agents').subscribe(
       (response) => {
         console.log('API response:', response);
         this.agents = response
@@ -68,7 +68,7 @@ export class NavbarComponent {
     this.conversationIdChange.emit("");
   }
   del_all_Conv(): void {
-    this.http.delete<any>('http://localhost:8000/del_all_conv').subscribe(
+    this.http.delete<any>('https://colorational-emelia-interlaboratory.ngrok-free.dev//del_all_conv').subscribe(
       (response) => {
         console.log('API response:', response);
         this.conversations = [];
