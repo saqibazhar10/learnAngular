@@ -78,7 +78,10 @@ triggerDocChat() {
   }
 
   fetchData(): void {
-    this.http.get<any>('https://colorational-emelia-interlaboratory.ngrok-free.dev/documents').subscribe(
+    this.http.get<any>('https://colorational-emelia-interlaboratory.ngrok-free.dev/documents', {
+  headers: {
+    'Accept': 'application/json'
+  }}).subscribe(
       (response) => {
         console.log('API response:', response);
         this.documents = response.documents
