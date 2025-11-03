@@ -1,0 +1,75 @@
+<!-- app.component.html -->
+<div class="flex h-screen w-screen">
+  <app-navbar></app-navbar>
+
+  <!-- Main Content Area -->
+  <div class="flex w-full flex-col">
+    <div class="my-5 p-2 ml-10 font-semibold text-2xl flex space-x-1">
+      <p>Manage Prompt Agents -</p>
+      <p class="text-gray-600">Configure Agent</p>
+    </div>
+    <hr class="h-px bg-white border-0" />
+    <div class="w-full flex justify-center">
+      <div class="bg-white mt-5 flex justify-center w-1/2 rounded-xl">
+        <div class="w-full max-w-2xl space-y-6 p-5 mt-5">
+          <!-- Name -->
+          <div>
+            <label class="block text-gray-700 font-semibold mb-1">Name</label>
+            <input
+              type="text"
+              [(ngModel)]="agent.name"
+              placeholder="Name your agent"
+              class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#5662f6]"
+            />
+          </div>
+
+          <!-- Description -->
+          <div>
+            <label class="block text-gray-700 font-semibold mb-1">Description</label>
+            <input
+              type="text"
+              [(ngModel)]="agent.description"
+              placeholder="Add a short description about what this agent does"
+              class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#5662f6]"
+            />
+          </div>
+
+          <!-- Instructions -->
+          <div>
+            <label class="block text-gray-700 font-semibold mb-1">Instructions</label>
+            <textarea
+              rows="4"
+              [(ngModel)]="agent.instructions"
+              placeholder="What does the agent do? How does it behave? What should it avoid?"
+              class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#5662f6]"
+            ></textarea>
+          </div>
+
+          <!-- Creativity -->
+          <div>
+            <label class="block text-gray-700 font-semibold mb-1">Creativity</label>
+            <input
+              type="number"
+              min="0"
+              max="1"
+              step="0.1"
+              [(ngModel)]="agent.creativity"
+              class="w-32 border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#5662f6]"
+            />
+            <div class="text-sm text-gray-600 mt-1">Enter a value between 0 and 1 (e.g., 0.1, 0.2, ..., 1.0)</div>
+          </div>
+
+          <!-- Button -->
+          <div class="mt-10 mb-5 flex justify-end">
+            <button
+              (click)="createAgent()"
+              class="flex gap-2 px-11 py-2.5 bg-[#5662f6] text-white rounded-full text-sm font-light"
+            >
+              <span>+</span> Create Agent
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

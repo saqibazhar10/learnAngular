@@ -1,0 +1,81 @@
+<!-- Wrapper: Sidebar + Content -->
+<div class="flex h-screen w-screen">
+
+    <app-navbar></app-navbar>
+    <div class="w-screen">
+        <!-- Main Content Area -->
+        <p class="text-2xl m-5 mt-10 font-semibold">Documents</p>
+        <div class="flex">
+
+            <div class="mx-5 p-5 text-xl bg-white rounded-xl cursor-pointer w-1/2" (click)="triggerFileUpload()">
+                <div class="flex gap-4 items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="46" height="33" viewBox="0 0 24 24" fill="none"
+                        stroke="#5662f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="17 8 12 3 7 8" />
+                        <line x1="12" y1="3" x2="12" y2="15" />
+                    </svg>
+                    <p class="py-1">Upload New Documents</p>
+                </div>
+
+                <!-- Hidden File Input -->
+                <input type="file" #fileInput (change)="handleFileUpload($event)" class="hidden" />
+            </div>
+            <div class="mx-5 p-5 text-xl bg-white rounded-xl cursor-pointer w-1/2" (click)="triggerDocChat()">
+                 <div class="flex gap-1 items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="46" height="33" fill="none" stroke="#5662f6"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-files p-1">
+                    <path d="M7 3h8l5 5v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" />
+                    <polyline points="15 3 15 8 20 8" />
+                </svg>
+                <p class="py-1">Chat with Selected Documents</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="overflow-x-auto mx-5 my-8">
+            <table class="min-w-full text-sm text-left text-gray-500 bg-white shadow-lg">
+                <thead class="text-xs text-white bg-[#5662f6]">
+                    <tr>
+                        <th class="px-6 py-4 font-medium">
+                            <input type="checkbox" (change)="toggleAll($event)" />
+                        </th>
+                        <th class="px-6 py-4 font-medium">Document Name</th>
+                        <th class="px-6 py-4 font-medium">Uploaded On</th>
+                        <th class="px-6 py-4 font-medium">Last Processed</th>
+                        <th class="px-6 py-4 font-medium">File Size</th>
+                        <th class="px-6 py-4 font-medium">Status</th>
+                        <th class="px-6 py-4 text-right font-medium">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let doc of documents" class="border-b border-b-gray-200">
+                        <td class="px-6 py-4">
+                            <input type="checkbox" [value]="doc.id" (change)="onCheckboxChange($event, doc.id)"
+                                [checked]="isSelected(doc.id)" />
+
+                        <td class="px-6 py-4 font-medium text-gray-900">{{ doc.original_filename }}</td>
+                        <td class="px-6 py-4">{{ doc.updated_at | date: 'M/d/yyyy - h:mm:ss a' }}</td>
+                        <td class="px-6 py-4">{{ doc.completed_at | date: 'M/d/yyyy - h:mm:ss a' }}</td>
+                        <td class="px-6 py-4">{{ doc.file_size }}</td>
+                        <td class="px-6 py-4">
+                            <span *ngIf="doc.status === 'completed'"
+                                class="inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800">
+                                Active
+                            </span>
+                            <span *ngIf="doc.status === 'in_progress'"
+                                class="inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold bg-yellow-100 text-yellow-800">
+                                Pending
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <button class="text-red-400 hover:text-red-500" (click)="deletefile(doc.id)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
