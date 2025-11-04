@@ -1,8 +1,0 @@
-{
-  "/api": {
-    "target": "https://colorational-emelia-interlaboratory.ngrok-free.dev",
-    "secure": false,
-    "changeOrigin": true,
-    "logLevel": "debug"
-  }
-}

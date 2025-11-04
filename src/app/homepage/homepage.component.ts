@@ -102,11 +102,11 @@ export class HomepageComponent {
     let endpoint = '';
 
     if (this.doc_ids && this.doc_ids.length > 0) {
-      endpoint = '/api/doc_chat';
+      endpoint = 'https://colorational-emelia-interlaboratory.ngrok-free.dev/doc_chat';
     } else if (this.agentId && this.agentId != "") {
-      endpoint = '/api/free_chat'
+      endpoint = 'https://colorational-emelia-interlaboratory.ngrok-free.dev/free_chat'
     }else {
-      endpoint = '/api/free_chat';
+      endpoint = 'https://colorational-emelia-interlaboratory.ngrok-free.dev/free_chat';
     }
 
     this.http.post<any>(endpoint, payload).subscribe({
@@ -135,7 +135,7 @@ export class HomepageComponent {
   }
 
   loadConversation(convId: string) {
-    this.http.get<any>(`/api/conversation/${convId}`).subscribe({
+    this.http.get<any>(`https://colorational-emelia-interlaboratory.ngrok-free.dev/conversation/${convId}`).subscribe({
       next: (res) => {
         this.chatHistory = res.messages.map((msg: any) => ({
           conversation_id: res.conversation_id,
