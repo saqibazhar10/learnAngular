@@ -137,8 +137,7 @@ export class HomepageComponent {
   loadConversation(convId: string) {
     this.http.get<any>(`https://colorational-emelia-interlaboratory.ngrok-free.dev/conversation/${convId}`, {
   headers: {
-    'ngrok-skip-browser-warning': '1',
-    "Access-Control-Allow-Origin": "*"
+    'ngrok-skip-browser-warning': '1'
   }}).subscribe({
       next: (res) => {
         this.chatHistory = res.messages.map((msg: any) => ({

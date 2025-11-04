@@ -41,8 +41,7 @@ export class NavbarComponent {
   fetchData(): void {
     this.http.get<any>('https://colorational-emelia-interlaboratory.ngrok-free.dev/all_conversations', {
   headers: {
-    'ngrok-skip-browser-warning': '1',
-    "Access-Control-Allow-Origin": "*"
+    'ngrok-skip-browser-warning': '1'
   }}).subscribe(
       (response) => {
         console.log('API response:', response);
@@ -60,8 +59,7 @@ export class NavbarComponent {
     fetchAgents(): void {
     this.http.get<any>('https://colorational-emelia-interlaboratory.ngrok-free.dev/all_agents', {
   headers: {
-    'ngrok-skip-browser-warning': '1',
-    "Access-Control-Allow-Origin": "*"
+    'ngrok-skip-browser-warning': '1'
   }}).subscribe(
       (response) => {
         console.log('API response:', response);
