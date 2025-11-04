@@ -102,11 +102,11 @@ export class HomepageComponent {
     let endpoint = '';
 
     if (this.doc_ids && this.doc_ids.length > 0) {
-      endpoint = 'http://ec2-16-171-66-13.eu-north-1.compute.amazonaws.com:8000/doc_chat';
+      endpoint = 'https://colorational-emelia-interlaboratory.ngrok-free.dev/doc_chat';
     } else if (this.agentId && this.agentId != "") {
-      endpoint = 'http://ec2-16-171-66-13.eu-north-1.compute.amazonaws.com:8000/free_chat'
+      endpoint = 'https://colorational-emelia-interlaboratory.ngrok-free.dev/free_chat'
     }else {
-      endpoint = 'http://ec2-16-171-66-13.eu-north-1.compute.amazonaws.com:8000/free_chat';
+      endpoint = 'https://colorational-emelia-interlaboratory.ngrok-free.dev/free_chat';
     }
 
     this.http.post<any>(endpoint, payload).subscribe({
@@ -135,7 +135,7 @@ export class HomepageComponent {
   }
 
   loadConversation(convId: string) {
-    this.http.get<any>(`http://ec2-16-171-66-13.eu-north-1.compute.amazonaws.com:8000/conversation/${convId}`).subscribe({
+    this.http.get<any>(`https://colorational-emelia-interlaboratory.ngrok-free.dev/conversation/${convId}`).subscribe({
       next: (res) => {
         this.chatHistory = res.messages.map((msg: any) => ({
           conversation_id: res.conversation_id,
