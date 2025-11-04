@@ -43,7 +43,7 @@ handleFileUpload(event: Event): void {
     const formData = new FormData();
     formData.append('file', file, file.name);
 
-    this.http.post('https://colorational-emelia-interlaboratory.ngrok-free.dev/upload', formData).subscribe({
+    this.http.post('http://13.53.48.142:8000/upload', formData).subscribe({
       next: (response) => {
         console.log('Upload successful:', response);
         // Optionally refresh document list or give user feedback here
@@ -78,7 +78,7 @@ triggerDocChat() {
   }
 
   fetchData(): void {
-    this.http.get<any>('https://colorational-emelia-interlaboratory.ngrok-free.dev/documents', {
+    this.http.get<any>('http://13.53.48.142:8000/documents', {
   headers: {
     'Accept': 'application/json'
   }}).subscribe(
@@ -147,7 +147,7 @@ toggleAll(event: any) {
 }
 
 deletefile(doc_id:number):void{
-  this.http.delete<any>(`https://colorational-emelia-interlaboratory.ngrok-free.dev/documents/${doc_id}`).subscribe(
+  this.http.delete<any>(`http://13.53.48.142:8000/documents/${doc_id}`).subscribe(
       (response) => {
         console.log('API response:', response);
         this.fetchData();
